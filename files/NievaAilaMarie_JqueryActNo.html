@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+<script>
+$(document).ready(function(){
+  $("button").click(function(){
+    $("div").toggle();
+  });
+});
+</script>
+</head>
+<style>
+.division{ border-radius: 25px;
+			background: #b7d1ea;
+			padding: 30px;
+			width: 30%;
+			height: 50%;
+			margin-top: 50 px;
+			font-family:'century gothic';
+			text-align:center;
+			border-spacing: 10px;
+			padding-top:1%;
+			padding-bottom:2%;
+}
+.button{ display:inline-block;
+}
+</style>
+<body>
+
+<button>Hide/Show Text</button>
+<br>
+<br>
+<div class ="division" align="center">
+	<p>Insert text here</p>
+	<p>Text</p>
+</div>
+
+</body>
+</html>

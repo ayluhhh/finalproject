@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html>
+<meta charset="UTF-8">
+<head>
+<title>Calculate Average</title>
+<style>
+body {
+background-color: pink;
+}
+
+h1 {text-align: center;}
+
+form {text-align: center;}
+
+div {text-align: center;}
+
+#averageResult{text-align:center;}
+
+.result {
+text-align: center;
+}
+
+.honors {
+color: green;
+}
+
+.passed {
+color: blue;
+}
+
+.failed {
+color: red;
+}
+</style>
+<script src="script.js"></script>
+</head>
+<body>
+<h1>Student Form</h1>
+<form>
+<label for="name">Student Name:</label><br>
+<input type="text" id="name"name="name"><br>
+<label for="section">Section:</label><br>
+<input type="text" id="section" name="section"><br>
+<label for="year">Year Level:</label><br>
+<input type="text" id="year"name="year"><br><br>
+
+</form>
+
+<form id="gradeForm">
+<label for="grade1">Grade 1:</label>
+<input type="number" id="grade1" required><br>
+
+<label for="grade2">Grade 2:</label>
+<input type="number" id="grade2" required><br>
+
+<label for="grade3">Grade 3:</label>
+<input type="number" id="grade3" required><br>
+
+<label for="grade4">Grade 4:</label>
+<input type="number" id="grade4" required><br>
+
+<label for="grade5">Grade 5:</label>
+<input type="number" id="grade5" required><br>
+<button type="button" onclick="calculateAverage()">Calculate Average</button>
+</form>
+
+<div id="result" class="result"></div>
+
+<script>
+function calculateAverage() {
+// Get the input values
+var name = document.getElementById("name").value;
+var section = document.getElementById("section").value;
+var year = document.getElementById("year").value;
+
+
+// Check if name, section, and year are empty
+if (name === "" || section === "" || year === "") {
+alert("Please input the student name, section, and year level before calculating the average.");
+return;
+}
+
+// Get the grade values
+var grade1 = parseFloat(document.getElementById("grade1").value);
+var grade2 = parseFloat(document.getElementById("grade2").value);
+var grade3 = parseFloat(document.getElementById("grade3").value);
+var grade4 = parseFloat(document.getElementById("grade4").value);
+var grade5 = parseFloat(document.getElementById("grade5").value);
+
+// Check if any grade is empty
+if (isNaN(grade1) || isNaN(grade2) || isNaN(grade3) || isNaN(grade4) || isNaN(grade5)) {
+var resultElement = document.getElementById("result");
+resultElement.innerHTML = "Please input all grades first!";
+
+return;
+}
+
+// Calculate the average
+var average = (grade1 + grade2 + grade3 + grade4 + grade5) / 5;
+
+// Get the result element
+var resultElement = document.getElementById("result");
+
+// Clear previous content and classes
+resultElement.innerHTML = "";
+resultElement.className = "result";
+
+// Display the result based on average
+if (average > 90) {
+resultElement.textContent = "With honors. Average: " + average.toFixed(2);
+resultElement.classList.add("honors");
+} else if (average >= 75 && average <= 90) {
+resultElement.textContent = "Passed. Average: " + average.toFixed(2);
+resultElement.classList.add("passed");
+} else {
+resultElement.textContent = "Failed. Average: " + average.toFixed(2);
+resultElement.classList.add("failed");
+}
+}
+</script>
+</body>
+</html>
