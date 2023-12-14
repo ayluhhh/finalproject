@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Bootstrap demo</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+  </head>
+  <body>
+    <div class="container text-center">
+        <div class="row">
+        <!--Form inputs-->
+          <div class="col" id = "form-id">
+            <h2> FORM </h2>
+            <form>
+                <div class="mb-3">
+                  <label for="name-input" class="form-label">Name</label>
+                  <input type="text" class="form-control" id="name-input" aria-describedby="name">
+                </div>
+                <div class="mb-3">
+                    <label for="course-input" class="form-label">Course</label>
+                    <input type="text" class="form-control" id="course-input" aria-describedby="course">
+                </div>
+                <div class="mb-3">
+                    <label for="section-input" class="form-label">Section</label>
+                    <input type="text" class="form-control" id="section-input" aria-describedby="section">
+                </div>
+                <button type="submit" class="btn btn-primary" id = "savebtn">Save Record</button>
+                </form>
+          </div>
+
+          <!--Records stored in table-->
+          <div class="col" id = "table-actions">
+            <h2> RECORDS </h2>
+            <table class="table table-striped" id = "records-table">
+                <thead>
+                  <tr>
+                    <th scope="col">Name</th>
+                    <th scope="col">Section</th>
+                    <th scope="col">Course</th>
+                    <th scope="col">ACTIONS</th>
+                  </tr>
+                </thead>
+                <tbody></tbody>
+            </table>
+          </div>
+        </div>
+        <div class="container-fluid fixed-bottom">
+          <!-- Notification alert -->
+          <div class="row">
+            <div class="alert alert-success mt-3 col-md-6 offset-md-3" role="alert" id="delete-alert" style="display: none;">
+              Record successfully deleted!
+            </div>
+          </div>
+        </div>
+      </div>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+
+    <!--js code  with jquery-->
+    <script type = "text/javascript">
+        $(document).ready(function(){
+            //event for save button
+            $("#savebtn").click(function(e){
+                e.preventDefault()
+                var name = $("#name-input").val();
+                var course = $("#course-input").val();
+                var section = $("#section-input").val();
+                $("#records-table").find("tbody").append('<tr><td>' + name + '</td><td>' + course + '</td><td>' +  section + '</td><td><button type="button" class="btn btn-danger" id = "deletebtn">DELETE</button></td></tr>');
+
+                // clear form input
+                var name = $("#name-input").val('');
+                var course = $("#course-input").val('');
+                var section = $("#section-input").val('');
+            });
+
+            //event for delete button
+            $("#records-table").on("click", "#deletebtn", function(){
+                $(this).closest('tr').remove();
+                // Show delete notification alert
+                $("#delete-alert").fadeIn().delay(800).fadeOut();
+            });
+        });
+    </script>
+</body>
+</html>
