@@ -32,10 +32,58 @@
 		padding-left: 120px;
 	
 	}
+	.navbar {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 10px;
+      background-color: #333;
+      color: white;
+    }
+
+    .logo {
+      font-size: 20px;
+      text-decoration: none;
+      color: #fff;
+    }
+
+    .nav-links {
+      list-style: none;
+      display: flex;
+      margin: 0;
+      padding: 0;
+    }
+
+    .nav-links li {
+      margin: 0 10px;
+    }
+
+    .nav-links a {
+      text-decoration: none;
+      color: #fff;
+      padding: 5px;
+    }
+
+    .nav-links a:hover {
+      color: #ddd;
+    }
+
 
 </style>
 	<head> <h1>Learning Contract </h1> </head>
 		<body style = "background-color:#FFC7EA">
+			<nav class="navbar">
+				<a href="#" class="logo">My Website</a>
+				<ul class="nav-links">
+				  <li><a href="http://127.0.0.1:5500/finalproj.html">Home</a></li>
+				  <li><a href="http://127.0.0.1:5500/finalproj.html#portfolio" onclick="scrollToPortfolio()">Portfolio</a></li>
+				  <li><a href="#">Contact</a></li>
+				</ul>
+			  </nav>
 		<br></br>
 		  <img src="pic.jpg" class="myimg" />
 			<div class="intro">
